@@ -1,10 +1,17 @@
 #!/bin/bash
 check_result() {
-    local resultado = $1
-    if [[ $resultado -ne 0 ]]; then; exit $resultado; fi
-     echo
+    local resultado="$1"
+    if [[ $resultado -ne 0 ]]; then
+        exit $resultado
+    fi
+
+    echo
+    echo
+    echo
 }
+
 ./stop.sh
+
 cd producer-service/
 mvn clean package
 check_result $?
