@@ -44,9 +44,26 @@ public class WebSocketServer {
         chatProducer.sendMessage(message);
         broadcast(message);
     }
-    
+
     @OnClose
     public void onClose(Session session) {
         connections.remove(this);
     }
+
+    public static void broadcast(String message) {
+    for (WebSocketServer client : connections) {
+        try {
+            synchronized (client) {
+                client.session.getBasicRemote().sendText(message);
+            }
+        } catch (IOException e) {
+            connections.remove(client);
+            try {
+                client.session.close();
+            } catch (IOException ex) {
+                // Ignorar
+            }
+        }
+    }
+}
 }
