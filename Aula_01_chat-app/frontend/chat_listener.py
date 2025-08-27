@@ -3,7 +3,7 @@ import json
 import time
 
 # Endereço do servidor WebSocket do ChatConsumer
-WS_SERVER = "ws://localhost:8081/chat/ws"
+WS_SERVER = "ws://localhost:8080/chat/ws"
 
 def on_open(ws):
     print("[INFO] Conectado ao ChatConsumer (Java).")
