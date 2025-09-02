@@ -32,7 +32,7 @@ services:
         reservations:
           memory: 512M
     networks:
-      - my-network
+      - int-network
 
   kafka2:
     container_name: kafka2
@@ -63,7 +63,7 @@ services:
         reservations:
           memory: 512M
     networks:
-      - my-network
+      - int-network
 
   kafka3:
     container_name: kafka3
@@ -94,7 +94,7 @@ services:
         reservations:
           memory: 512M
     networks:
-      - my-network
+      - int-network
 
   producer-service0:
     container_name: producer_service0
@@ -115,7 +115,8 @@ services:
       #lista de brokers possíveis, procurando um para se conectar
       KAFKA_BROKERS: kafka1:9092,kafka2:9093,kafka3:9094
     networks:
-      - my-network
+      - int-network
+      - ext-network
 
   producer-service1:
     container_name: producer_service1
@@ -135,7 +136,8 @@ services:
     environment:
       KAFKA_BROKERS: kafka2:9093,kafka1:9092,kafka3:9094
     networks:
-      - my-network
+      - int-network
+      - ext-network
 
   consumer-service0:
     container_name: consumer_service0
@@ -155,7 +157,8 @@ services:
     environment:
       KAFKA_BROKERS: kafka1:9092,kafka2:9093,kafka3:9094
     networks:
-      - my-network
+      - int-network
+      - ext-network
 
   consumer-service1:
     container_name: consumer_service1
@@ -175,7 +178,8 @@ services:
     environment:
       KAFKA_BROKERS: kafka2:9093,kafka1:9092,kafka3:9094
     networks:
-      - my-network
+      - int-network
+      - ext-network
 
   frontend:
     container_name: frontend1
@@ -187,11 +191,14 @@ services:
     ports:
       - "8000:8000"
     networks:
-      - my-network
+      - ext-network
 
 networks:
-  my-network:
+  ext-network:
     driver: bridge
+  int-network:
+    driver: bridge
+    internal : True
 
 volumes:
   kafka1_logs:
