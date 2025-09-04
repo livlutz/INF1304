@@ -134,7 +134,7 @@ services:
         reservations:
           memory: 256M
     environment:
-      KAFKA_BROKERS: kafka2:9093,kafka1:9092,kafka3:9094
+      KAFKA_BROKERS: kafka1:9092,kafka2:9093,kafka3:9094
     networks:
       - int-network
       - ext-network
@@ -176,7 +176,7 @@ services:
         reservations:
           memory: 256M
     environment:
-      KAFKA_BROKERS: kafka2:9093,kafka1:9092,kafka3:9094
+      KAFKA_BROKERS: kafka1:9092,kafka2:9093,kafka3:9094
     networks:
       - int-network
       - ext-network
