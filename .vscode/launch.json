@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/workspaces/INF1304/Threads",
-      "program": "/workspaces/INF1304/Threads/build/Debug/outDebug",
+      "cwd": "/workspaces/INF1304/valgrind",
+      "program": "/workspaces/INF1304/valgrind/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
